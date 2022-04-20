@@ -18,8 +18,4 @@ class HttpSignatureAuthPlugin(AuthPlugin):
     description = ''
 
     def get_auth(self, username: str = None, password: str = None):
-        rc_path = os.path.expanduser("~/.httpsigrc")
-        config = configparser.RawConfigParser()
-        config.read(rc_path)
-
-        return HttpSignatureAuth(config)
+        return HttpSignatureAuth()

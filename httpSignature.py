@@ -38,7 +38,11 @@ def get_digest(payload: str):
     return digest
 
 class HttpSignatureAuth(requests.auth.AuthBase):
-    def __init__(self, config: configparser):
+    def __init__(self):
+        rc_path = os.path.expanduser("~/.httpsigrc")
+        config = configparser.RawConfigParser()
+        config.read(rc_path)
+
         self.config = config
 
     def __call__(self, request: requests.PreparedRequest) -> requests.PreparedRequest:
