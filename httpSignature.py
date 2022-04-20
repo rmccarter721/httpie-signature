@@ -1,13 +1,12 @@
 from datetime import datetime
+from urllib.parse import urlparse
 import os
-from queue import Empty
 import requests.auth
 import requests
 import configparser
 import hashlib
 import base64
 import hmac
-from urllib.parse import urlparse
 
 def get_date():
     os.environ["TZ"] = "UTC"
@@ -56,9 +55,7 @@ class HttpSignatureAuth(requests.auth.AuthBase):
         try:
             rc = dict(self.config.items(host))
         except configparser.NoSectionError:
-            print("Please create ~/.httpsig.rc with key, secreit, algorithm and headers  Try again...")
-
-
+            print("Please create ~/.httpsig.rc with key, secret, algorithm and headers.")
 
         key=rc.get('key')
         secret=base64.b64decode(rc.get('secret'))
