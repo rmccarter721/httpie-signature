@@ -3,6 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='httpie-signature',
     description='Http Signature Authentication plugin for HTTPie.',
+    long_description=open('README.rst').read().strip(),
     version='0.0.1',
     author='Ryan McCarter',
     author_email='ryanmccarter721@gmail.com',
